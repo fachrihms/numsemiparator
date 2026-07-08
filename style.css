@@ -144,3 +144,62 @@ code {
   border-radius: 4px;
   font-size: 13px;
 }
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.compare-grid textarea {
+  margin-bottom: 8px;
+}
+
+.compare-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.result-col label {
+  font-size: 13px;
+}
+
+.result-list {
+  min-height: 100px;
+  max-height: 220px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.result-list.match {
+  background: #eaf7ef;
+  border-color: #b9e3c6;
+}
+
+.result-list.only-a {
+  background: #fdf0e8;
+  border-color: #f0cba9;
+}
+
+.result-list.only-b {
+  background: #eaf1fb;
+  border-color: #b9d0ee;
+}
+
+.result-col .actions {
+  margin-top: 8px;
+}
+
+.result-col button {
+  font-size: 13px;
+  padding: 8px 12px;
+}
+
+@media (max-width: 640px) {
+  .compare-grid,
+  .compare-results {
+    grid-template-columns: 1fr;
+  }
+}

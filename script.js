@@ -1,3 +1,10 @@
+function parseList(raw) {
+  return raw
+    .split(/[\r\n,;]+/)
+    .map(function (s) { return s.trim().replace(/^['"]+|['"]+$/g, '').trim(); })
+    .filter(Boolean);
+}
+
 function setupConverter(config) {
   const input = document.getElementById(config.inputId);
   const output = document.getElementById(config.outputId);
@@ -6,17 +13,10 @@ function setupConverter(config) {
   const status = document.getElementById(config.statusId);
   const count = document.getElementById(config.countId);
 
-  function getParts() {
-    return input.value
-      .split(/[\s,;]+/)
-      .map(function (s) { return s.trim(); })
-      .filter(Boolean);
-  }
-
   function update() {
-    const parts = getParts();
+    const parts = parseList(input.value);
     output.textContent = config.format(parts);
-    count.textContent = parts.length + (parts.length === 1 ? ' angka' : ' angka');
+    count.textContent = parts.length + ' angka';
   }
 
   input.addEventListener('input', update);
@@ -24,18 +24,8 @@ function setupConverter(config) {
   copyBtn.addEventListener('click', async function () {
     const text = output.textContent;
     if (!text) return;
-    try {
-      await navigator.clipboard.writeText(text);
-      showStatus();
-    } catch (e) {
-      const range = document.createRange();
-      range.selectNode(output);
-      window.getSelection().removeAllRanges();
-      window.getSelection().addRange(range);
-      document.execCommand('copy');
-      window.getSelection().removeAllRanges();
-      showStatus();
-    }
+    await copyText(text, output);
+    showStatus(status);
   });
 
   clearBtn.addEventListener('click', function () {
@@ -44,14 +34,27 @@ function setupConverter(config) {
     input.focus();
   });
 
-  function showStatus() {
-    status.textContent = 'Tersalin';
-    setTimeout(function () {
-      status.textContent = '';
-    }, 1500);
-  }
-
   update();
+}
+
+async function copyText(text, fallbackEl) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (e) {
+    const range = document.createRange();
+    range.selectNode(fallbackEl);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+  }
+}
+
+function showStatus(el) {
+  el.textContent = 'Tersalin';
+  setTimeout(function () {
+    el.textContent = '';
+  }, 1500);
 }
 
 setupConverter({
@@ -74,4 +77,85 @@ setupConverter({
   format: function (parts) {
     return parts.map(function (p) { return "'" + p + "'"; }).join(', ');
   }
+});
+
+/* ---- Bandingkan dua daftar ---- */
+const inputA = document.getElementById('inputA');
+const inputB = document.getElementById('inputB');
+const countA = document.getElementById('countA');
+const countB = document.getElementById('countB');
+
+const matchList = document.getElementById('matchList');
+const onlyAList = document.getElementById('onlyAList');
+const onlyBList = document.getElementById('onlyBList');
+const countMatch = document.getElementById('countMatch');
+const countOnlyA = document.getElementById('countOnlyA');
+const countOnlyB = document.getElementById('countOnlyB');
+const statusCompare = document.getElementById('statusCompare');
+
+function updateCompare() {
+  const listA = parseList(inputA.value);
+  const listB = parseList(inputB.value);
+
+  countA.textContent = listA.length + ' angka';
+  countB.textContent = listB.length + ' angka';
+
+  const setA = new Set(listA);
+  const setB = new Set(listB);
+
+  // Preserve order, dedupe within each result
+  const seenMatch = new Set();
+  const match = [];
+  listA.forEach(function (v) {
+    if (setB.has(v) && !seenMatch.has(v)) {
+      match.push(v);
+      seenMatch.add(v);
+    }
+  });
+
+  const seenOnlyA = new Set();
+  const onlyA = [];
+  listA.forEach(function (v) {
+    if (!setB.has(v) && !seenOnlyA.has(v)) {
+      onlyA.push(v);
+      seenOnlyA.add(v);
+    }
+  });
+
+  const seenOnlyB = new Set();
+  const onlyB = [];
+  listB.forEach(function (v) {
+    if (!setA.has(v) && !seenOnlyB.has(v)) {
+      onlyB.push(v);
+      seenOnlyB.add(v);
+    }
+  });
+
+  matchList.textContent = match.join('\n');
+  onlyAList.textContent = onlyA.join('\n');
+  onlyBList.textContent = onlyB.join('\n');
+
+  countMatch.textContent = match.length;
+  countOnlyA.textContent = onlyA.length;
+  countOnlyB.textContent = onlyB.length;
+}
+
+inputA.addEventListener('input', updateCompare);
+inputB.addEventListener('input', updateCompare);
+updateCompare();
+
+document.getElementById('copyMatch').addEventListener('click', async function () {
+  if (!matchList.textContent) return;
+  await copyText(matchList.textContent, matchList);
+  showStatus(statusCompare);
+});
+document.getElementById('copyOnlyA').addEventListener('click', async function () {
+  if (!onlyAList.textContent) return;
+  await copyText(onlyAList.textContent, onlyAList);
+  showStatus(statusCompare);
+});
+document.getElementById('copyOnlyB').addEventListener('click', async function () {
+  if (!onlyBList.textContent) return;
+  await copyText(onlyBList.textContent, onlyBList);
+  showStatus(statusCompare);
 });
