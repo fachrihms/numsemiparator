@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabung Angka jadi Satu Baris</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Gabung angka jadi satu baris</h1>
+    <p class="subtitle">Tempel angka (satu per baris, atau dipisah spasi/koma), hasilnya otomatis digabung pakai titik koma (;).</p>
+
+    <label for="input">Input</label>
+    <textarea id="input" rows="8" placeholder="123458910&#10;123328573&#10;094385931&#10;1298372183"></textarea>
+
+    <label for="output">Hasil</label>
+    <div id="output" class="output-box"></div>
+
+    <div class="actions">
+      <button id="copyBtn">Copy to clipboard</button>
+      <button id="clearBtn" class="secondary">Clear</button>
+      <span id="status"></span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
