@@ -57,12 +57,12 @@
 
       <div class="compare-grid">
         <div>
-          <label for="inputA">Daftar A</label>
+          <label for="inputA">Listed PO via Ticket</label>
           <textarea id="inputA" rows="8" placeholder="3101826332&#10;3101826878&#10;3101826702&#10;..."></textarea>
           <span id="countA" class="count-badge">0 angka</span>
         </div>
         <div>
-          <label for="inputB">Daftar B</label>
+          <label for="inputB">Actual PO (PO sudah ada di DB)</label>
           <textarea id="inputB" rows="8" placeholder="&quot;3101799760&quot;&#10;&quot;3101814623&quot;&#10;&quot;3101821946&quot;&#10;..."></textarea>
           <span id="countB" class="count-badge">0 angka</span>
         </div>
@@ -70,21 +70,21 @@
 
       <div class="compare-results">
         <div class="result-col">
-          <label>Sudah ada di keduanya (<span id="countMatch">0</span>)</label>
+          <label>PO sudah ada di DB (<span id="countMatch">0</span>)</label>
           <div id="matchList" class="output-box result-list match"></div>
           <div class="actions">
             <button id="copyMatch">Copy to clipboard</button>
           </div>
         </div>
         <div class="result-col">
-          <label>Hanya di A, belum ada di B (<span id="countOnlyA">0</span>)</label>
+          <label>Belum ada di DB, cuma ada di tiket (<span id="countOnlyA">0</span>)</label>
           <div id="onlyAList" class="output-box result-list only-a"></div>
           <div class="actions">
             <button id="copyOnlyA">Copy to clipboard</button>
           </div>
         </div>
         <div class="result-col">
-          <label>Hanya di B, belum ada di A (<span id="countOnlyB">0</span>)</label>
+          <label>Ada di DB tapi tidak ada di tiket (<span id="countOnlyB">0</span>)</label>
           <div id="onlyBList" class="output-box result-list only-b"></div>
           <div class="actions">
             <button id="copyOnlyB">Copy to clipboard</button>
