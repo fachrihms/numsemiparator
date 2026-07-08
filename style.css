@@ -27,11 +27,21 @@ h1 {
   margin: 0 0 8px;
 }
 
+h2 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
 .subtitle {
   font-size: 14px;
   color: #666;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   line-height: 1.5;
+}
+
+.block {
+  margin-bottom: 8px;
 }
 
 label {
@@ -69,7 +79,7 @@ textarea:focus {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   font-size: 14px;
   word-break: break-all;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   min-width: 0;
 }
 
@@ -77,6 +87,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 button {
@@ -105,21 +116,25 @@ button.secondary {
   border: 1px solid #d6d6d3;
 }
 
-#status, #status2 {
+.status {
   font-size: 13px;
   color: #1a7f4e;
+}
+
+.count-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: #444;
+  background: #f0f0ee;
+  border: 1px solid #e0e0dd;
+  padding: 4px 10px;
+  border-radius: 999px;
 }
 
 .divider {
   border: none;
   border-top: 1px solid #e5e5e3;
   margin: 32px 0 24px;
-}
-
-h2 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0 0 8px;
 }
 
 code {

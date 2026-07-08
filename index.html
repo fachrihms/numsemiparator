@@ -9,32 +9,45 @@
 <body>
   <main class="container">
     <h1>Gabung angka jadi satu baris</h1>
-    <p class="subtitle">Tempel angka (satu per baris, atau dipisah spasi/koma), hasilnya otomatis digabung pakai titik koma (;).</p>
+    <p class="subtitle">Tempel angka (satu per baris, atau dipisah spasi/koma) di masing-masing kotak, hasilnya otomatis digabung.</p>
 
-    <label for="input">Input</label>
-    <textarea id="input" rows="8" placeholder="123458910&#10;123328573&#10;094385931&#10;1298372183"></textarea>
+    <section class="block">
+      <h2>Format titik koma</h2>
+      <p class="subtitle">Hasil versi <code>angka;angka;angka</code></p>
 
-    <label for="output">Hasil</label>
-    <div id="output" class="output-box"></div>
+      <label for="input1">Input</label>
+      <textarea id="input1" rows="6" placeholder="123458910&#10;123328573&#10;094385931&#10;1298372183"></textarea>
 
-    <div class="actions">
-      <button id="copyBtn">Copy to clipboard</button>
-      <button id="clearBtn" class="secondary">Clear</button>
-      <span id="status"></span>
-    </div>
+      <label for="output1">Hasil</label>
+      <div id="output1" class="output-box"></div>
+
+      <div class="actions">
+        <button id="copyBtn1">Copy to clipboard</button>
+        <button id="clearBtn1" class="secondary">Clear</button>
+        <span id="count1" class="count-badge">0 angka</span>
+        <span id="status1" class="status"></span>
+      </div>
+    </section>
 
     <hr class="divider">
 
-    <h2>Format kutip koma (quoted)</h2>
-    <p class="subtitle">Hasil versi <code>'angka', 'angka', 'angka'</code></p>
+    <section class="block">
+      <h2>Format kutip koma (quoted)</h2>
+      <p class="subtitle">Hasil versi <code>'angka', 'angka', 'angka'</code></p>
 
-    <label for="output2">Hasil</label>
-    <div id="output2" class="output-box"></div>
+      <label for="input2">Input</label>
+      <textarea id="input2" rows="6" placeholder="3101827989&#10;3101827998&#10;3101828048&#10;3101821946"></textarea>
 
-    <div class="actions">
-      <button id="copyBtn2">Copy to clipboard</button>
-      <span id="status2"></span>
-    </div>
+      <label for="output2">Hasil</label>
+      <div id="output2" class="output-box"></div>
+
+      <div class="actions">
+        <button id="copyBtn2">Copy to clipboard</button>
+        <button id="clearBtn2" class="secondary">Clear</button>
+        <span id="count2" class="count-badge">0 angka</span>
+        <span id="status2" class="status"></span>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
