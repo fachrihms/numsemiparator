@@ -170,10 +170,9 @@ code {
 
 .result-col label {
   font-size: 13px;
-  min-height: 36px;
-  display: flex;
-  align-items: flex-end;
+  min-height: 34px;
   margin-bottom: 6px;
+  line-height: 1.4;
 }
 
 .result-list {
