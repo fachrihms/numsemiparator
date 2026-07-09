@@ -160,10 +160,20 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 16px;
+  align-items: start;
+}
+
+.result-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .result-col label {
   font-size: 13px;
+  min-height: 36px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 6px;
 }
 
 .result-list {
@@ -171,6 +181,8 @@ code {
   max-height: 220px;
   overflow-y: auto;
   white-space: pre-wrap;
+  margin-bottom: 0;
+  flex: 1;
 }
 
 .result-list.match {
@@ -195,11 +207,16 @@ code {
 .result-col button {
   font-size: 13px;
   padding: 8px 12px;
+  width: 100%;
 }
 
 @media (max-width: 640px) {
   .compare-grid,
   .compare-results {
     grid-template-columns: 1fr;
+  }
+
+  .result-col label {
+    min-height: 0;
   }
 }
