@@ -3,127 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gabung Angka jadi Satu Baris</title>
+<title>Num Separator</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="container">
-    <h1>Gabung angka jadi satu baris</h1>
-    <p class="subtitle">Tempel angka (satu per baris, atau dipisah spasi/koma) di masing-masing kotak, hasilnya otomatis digabung.</p>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="brand">Num Separator</div>
+      <button class="nav-item active" data-target="page-semicolon">Format titik koma</button>
+      <button class="nav-item" data-target="page-quoted">Format quoted</button>
+      <button class="nav-item" data-target="page-compare">Bandingkan PO</button>
+      <button class="nav-item" data-target="page-template">Template pesan</button>
+    </nav>
 
-    <section class="block">
-      <h2>Format titik koma</h2>
-      <p class="subtitle">Hasil versi <code>angka;angka;angka</code></p>
+    <main class="content">
 
-      <label for="input1">Input</label>
-      <textarea id="input1" rows="6" placeholder="123458910&#10;123328573&#10;094385931&#10;1298372183"></textarea>
+      <section id="page-semicolon" class="page active">
+        <h1>Format titik koma</h1>
+        <p class="subtitle">Tempel angka (satu per baris, atau dipisah spasi/koma). Hasil versi <code>angka;angka;angka</code></p>
 
-      <label for="output1">Hasil</label>
-      <div id="output1" class="output-box"></div>
+        <label for="input1">Input</label>
+        <textarea id="input1" rows="8" placeholder="123458910&#10;123328573&#10;094385931&#10;1298372183"></textarea>
 
-      <div class="actions">
-        <button id="copyBtn1">Copy to clipboard</button>
-        <button id="clearBtn1" class="secondary">Clear</button>
-        <span id="count1" class="count-badge">0 angka</span>
-        <span id="status1" class="status"></span>
-      </div>
-    </section>
+        <label for="output1">Hasil</label>
+        <div id="output1" class="output-box"></div>
 
-    <hr class="divider">
-
-    <section class="block">
-      <h2>Format kutip koma (quoted)</h2>
-      <p class="subtitle">Hasil versi <code>'angka', 'angka', 'angka'</code></p>
-
-      <label for="input2">Input</label>
-      <textarea id="input2" rows="6" placeholder="3101827989&#10;3101827998&#10;3101828048&#10;3101821946"></textarea>
-
-      <label for="output2">Hasil</label>
-      <div id="output2" class="output-box"></div>
-
-      <div class="actions">
-        <button id="copyBtn2">Copy to clipboard</button>
-        <button id="clearBtn2" class="secondary">Clear</button>
-        <span id="count2" class="count-badge">0 angka</span>
-        <span id="status2" class="status"></span>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <section class="block">
-      <h2>Bandingkan dua daftar</h2>
-      <p class="subtitle">Tempel daftar A dan daftar B, lihat mana yang sudah ada (sama di keduanya) dan mana yang belum ada.</p>
-
-      <div class="compare-grid">
-        <div>
-          <label for="inputA">Listed PO via Ticket</label>
-          <textarea id="inputA" rows="8" placeholder="3101826332&#10;3101826878&#10;3101826702&#10;..."></textarea>
-          <span id="countA" class="count-badge">0 angka</span>
+        <div class="actions">
+          <button id="copyBtn1">Copy to clipboard</button>
+          <button id="clearBtn1" class="secondary">Clear</button>
+          <span id="count1" class="count-badge">0 angka</span>
+          <span id="status1" class="status"></span>
         </div>
-        <div>
-          <label for="inputB">Actual PO (PO sudah ada di DB)</label>
-          <textarea id="inputB" rows="8" placeholder="&quot;3101799760&quot;&#10;&quot;3101814623&quot;&#10;&quot;3101821946&quot;&#10;..."></textarea>
-          <span id="countB" class="count-badge">0 angka</span>
-        </div>
-      </div>
+      </section>
 
-      <div class="compare-results">
-        <div class="result-col">
-          <label>PO sudah ada di DB (<span id="countMatch">0</span>)</label>
-          <div id="matchList" class="output-box result-list match"></div>
-          <div class="actions">
-            <button id="copyMatch">Copy to clipboard</button>
+      <section id="page-quoted" class="page">
+        <h1>Format quoted</h1>
+        <p class="subtitle">Hasil versi <code>'angka', 'angka', 'angka'</code></p>
+
+        <label for="input2">Input</label>
+        <textarea id="input2" rows="8" placeholder="3101827989&#10;3101827998&#10;3101828048&#10;3101821946"></textarea>
+
+        <label for="output2">Hasil</label>
+        <div id="output2" class="output-box"></div>
+
+        <div class="actions">
+          <button id="copyBtn2">Copy to clipboard</button>
+          <button id="clearBtn2" class="secondary">Clear</button>
+          <span id="count2" class="count-badge">0 angka</span>
+          <span id="status2" class="status"></span>
+        </div>
+      </section>
+
+      <section id="page-compare" class="page">
+        <h1>Bandingkan PO</h1>
+        <p class="subtitle">Tempel daftar A dan daftar B, lihat mana yang sudah ada (sama di keduanya) dan mana yang belum ada.</p>
+
+        <div class="compare-grid">
+          <div>
+            <label for="inputA">Listed PO via Ticket</label>
+            <textarea id="inputA" rows="8" placeholder="3101826332&#10;3101826878&#10;3101826702&#10;..."></textarea>
+            <span id="countA" class="count-badge">0 angka</span>
+          </div>
+          <div>
+            <label for="inputB">Actual PO (PO sudah ada di DB)</label>
+            <textarea id="inputB" rows="8" placeholder="&quot;3101799760&quot;&#10;&quot;3101814623&quot;&#10;&quot;3101821946&quot;&#10;..."></textarea>
+            <span id="countB" class="count-badge">0 angka</span>
           </div>
         </div>
-        <div class="result-col">
-          <label>Belum ada di DB, cuma ada di tiket (<span id="countOnlyA">0</span>)</label>
-          <div id="onlyAList" class="output-box result-list only-a"></div>
-          <div class="actions">
-            <button id="copyOnlyA">Copy to clipboard</button>
+
+        <div class="compare-results">
+          <div class="result-col">
+            <label>PO sudah ada di DB (<span id="countMatch">0</span>)</label>
+            <div id="matchList" class="output-box result-list match"></div>
+            <div class="actions">
+              <button id="copyMatch">Copy to clipboard</button>
+            </div>
+          </div>
+          <div class="result-col">
+            <label>Belum ada di DB, cuma ada di tiket (<span id="countOnlyA">0</span>)</label>
+            <div id="onlyAList" class="output-box result-list only-a"></div>
+            <div class="actions">
+              <button id="copyOnlyA">Copy to clipboard</button>
+            </div>
+          </div>
+          <div class="result-col">
+            <label>Ada di DB tapi tidak ada di tiket (<span id="countOnlyB">0</span>)</label>
+            <div id="onlyBList" class="output-box result-list only-b"></div>
+            <div class="actions">
+              <button id="copyOnlyB">Copy to clipboard</button>
+            </div>
           </div>
         </div>
-        <div class="result-col">
-          <label>Ada di DB tapi tidak ada di tiket (<span id="countOnlyB">0</span>)</label>
-          <div id="onlyBList" class="output-box result-list only-b"></div>
-          <div class="actions">
-            <button id="copyOnlyB">Copy to clipboard</button>
-          </div>
+        <span id="statusCompare" class="status"></span>
+      </section>
+
+      <section id="page-template" class="page">
+        <h1>Template pesan</h1>
+        <p class="subtitle">Ketik isi/resolvean-nya aja, pembuka &amp; penutup otomatis ditempel.</p>
+
+        <label for="opening">Pembuka</label>
+        <input type="text" id="opening" value="Yth Bapak/Ibu">
+
+        <label for="body" style="margin-top: 16px;">Isi / resolvean</label>
+        <textarea id="body" rows="6" placeholder="Tulis isi pesannya di sini..."></textarea>
+
+        <label style="margin-top: 16px;">Penutup</label>
+        <div class="closing-options">
+          <button type="button" class="closing-btn" data-closing="Atas perhatian dan kerja samanya kami ucapkan terima kasih">Atas perhatian &amp; kerja sama</button>
+          <button type="button" class="closing-btn" data-closing="Demikian kami sampaikan atas perhatian dan kerja samanya kami ucapkan terima kasih">Demikian kami sampaikan</button>
+          <button type="button" class="closing-btn" data-closing="Terima kasih">Terima kasih</button>
         </div>
-      </div>
-      <span id="statusCompare" class="status"></span>
-    </section>
+        <div id="closingPreview" class="closing-preview"></div>
 
-    <hr class="divider">
+        <label for="outputTemplate" style="margin-top: 16px;">Hasil</label>
+        <div id="outputTemplate" class="output-box template-output"></div>
 
-    <section class="block">
-      <h2>Template pesan</h2>
-      <p class="subtitle">Ketik isi/resolvean-nya aja, pembuka & penutup otomatis ditempel.</p>
+        <div class="actions">
+          <button id="copyTemplate">Copy to clipboard</button>
+          <button id="clearTemplate" class="secondary">Clear</button>
+          <span id="statusTemplate" class="status"></span>
+        </div>
+      </section>
 
-      <label for="opening">Pembuka</label>
-      <input type="text" id="opening" value="Yth Bapak/Ibu">
-
-      <label for="body" style="margin-top: 16px;">Isi / resolvean</label>
-      <textarea id="body" rows="5" placeholder="Tulis isi pesannya di sini..."></textarea>
-
-      <label style="margin-top: 16px;">Penutup</label>
-      <div class="closing-options">
-        <button type="button" class="closing-btn" data-closing="Atas perhatian dan kerja samanya kami ucapkan terima kasih">Atas perhatian &amp; kerja sama</button>
-        <button type="button" class="closing-btn" data-closing="Demikian kami sampaikan atas perhatian dan kerja samanya kami ucapkan terima kasih">Demikian kami sampaikan</button>
-        <button type="button" class="closing-btn" data-closing="Terima kasih">Terima kasih</button>
-      </div>
-      <div id="closingPreview" class="closing-preview"></div>
-
-      <label for="outputTemplate" style="margin-top: 16px;">Hasil</label>
-      <div id="outputTemplate" class="output-box template-output"></div>
-
-      <div class="actions">
-        <button id="copyTemplate">Copy to clipboard</button>
-        <button id="clearTemplate" class="secondary">Clear</button>
-        <span id="statusTemplate" class="status"></span>
-      </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>

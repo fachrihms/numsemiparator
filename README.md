@@ -1,6 +1,6 @@
-# PO Tools
+# Num Separator
 
-Website utilitas untuk memproses nomor PO (purchase order) dan bikin template pesan. Semua jalan di browser (statis, tanpa backend), cocok di-host di GitHub Pages.
+Dashboard utilitas untuk memproses nomor PO (purchase order) dan bikin template pesan, dengan navigasi sidebar (bukan scroll panjang). Semua jalan di browser (statis, tanpa backend), cocok di-host di GitHub Pages.
 
 ## Fitur
 

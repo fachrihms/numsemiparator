@@ -7,18 +7,73 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: #f5f5f4;
   color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  padding: 40px 16px;
 }
 
-.container {
-  width: 100%;
-  max-width: 640px;
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
   background: #ffffff;
-  border: 1px solid #e5e5e3;
-  border-radius: 12px;
-  padding: 32px;
+  border-right: 1px solid #e5e5e3;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding: 0 12px 20px;
+}
+
+.nav-item {
+  text-align: left;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background: #f5f5f4;
+  color: #1a1a1a;
+}
+
+.nav-item.active {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px;
+}
+
+.page {
+  display: none;
+  max-width: 700px;
+}
+
+.page.active {
+  display: block;
 }
 
 h1 {
@@ -38,10 +93,6 @@ h2 {
   color: #666;
   margin: 0 0 20px;
   line-height: 1.5;
-}
-
-.block {
-  margin-bottom: 8px;
 }
 
 label {
@@ -66,6 +117,22 @@ textarea {
 }
 
 textarea:focus {
+  outline: none;
+  border-color: #999;
+}
+
+input[type="text"] {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d6d6d3;
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+input[type="text"]:focus {
   outline: none;
   border-color: #999;
 }
@@ -131,12 +198,6 @@ button.secondary {
   border-radius: 999px;
 }
 
-.divider {
-  border: none;
-  border-top: 1px solid #e5e5e3;
-  margin: 32px 0 24px;
-}
-
 code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   background: #f0f0ee;
@@ -145,6 +206,7 @@ code {
   font-size: 13px;
 }
 
+/* Compare */
 .compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -209,33 +271,7 @@ code {
   width: 100%;
 }
 
-@media (max-width: 640px) {
-  .compare-grid,
-  .compare-results {
-    grid-template-columns: 1fr;
-  }
-
-  .result-col label {
-    min-height: 0;
-  }
-}
-
-input[type="text"] {
-  width: 100%;
-  font-family: inherit;
-  font-size: 14px;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #d6d6d3;
-  background: #fafafa;
-  color: #1a1a1a;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  border-color: #999;
-}
-
+/* Template */
 .closing-options {
   display: flex;
   flex-wrap: wrap;
@@ -273,4 +309,36 @@ input[type="text"]:focus {
 
 .template-output {
   white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 12px;
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .content {
+    padding: 24px 20px;
+  }
+
+  .compare-grid,
+  .compare-results {
+    grid-template-columns: 1fr;
+  }
+
+  .result-col label {
+    min-height: 0;
+  }
 }

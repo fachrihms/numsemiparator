@@ -1,3 +1,16 @@
+/* ---- Navigasi sidebar ---- */
+const navItems = document.querySelectorAll('.nav-item');
+const pages = document.querySelectorAll('.page');
+
+navItems.forEach(function (item) {
+  item.addEventListener('click', function () {
+    navItems.forEach(function (n) { n.classList.remove('active'); });
+    pages.forEach(function (p) { p.classList.remove('active'); });
+    item.classList.add('active');
+    document.getElementById(item.getAttribute('data-target')).classList.add('active');
+  });
+});
+
 function parseList(raw) {
   return raw
     .split(/[\r\n,;]+/)
