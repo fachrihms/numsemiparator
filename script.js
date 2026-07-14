@@ -221,3 +221,22 @@ clearTemplateBtn.addEventListener('click', function () {
   updateTemplate();
   body.focus();
 });
+
+/* ---- Template siap pakai ---- */
+const genPengecekanBtn = document.getElementById('genPengecekan');
+const outputQuick = document.getElementById('outputQuick');
+const copyQuickBtn = document.getElementById('copyQuick');
+const statusQuick = document.getElementById('statusQuick');
+
+const TEMPLATE_PENGECEKAN = 'Kepada Yth. Bapak/ Ibu,\n\nTerkait kendala yang dialami sedang kami lakukan pengecekan terlebih dahulu, sehingga mohon kesediaannya untuk menunggu informasi lebih lanjut dari kami kembali.\n\nAtas perhatian dan kerja samanya kami ucapkan terima kasih.';
+
+genPengecekanBtn.addEventListener('click', function () {
+  outputQuick.textContent = TEMPLATE_PENGECEKAN;
+});
+
+copyQuickBtn.addEventListener('click', async function () {
+  const text = outputQuick.textContent;
+  if (!text) return;
+  await copyText(text, outputQuick);
+  showStatus(statusQuick);
+});
