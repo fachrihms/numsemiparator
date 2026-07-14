@@ -93,6 +93,36 @@
       </div>
       <span id="statusCompare" class="status"></span>
     </section>
+
+    <hr class="divider">
+
+    <section class="block">
+      <h2>Template pesan</h2>
+      <p class="subtitle">Ketik isi/resolvean-nya aja, pembuka & penutup otomatis ditempel.</p>
+
+      <label for="opening">Pembuka</label>
+      <input type="text" id="opening" value="Yth Bapak/Ibu">
+
+      <label for="body" style="margin-top: 16px;">Isi / resolvean</label>
+      <textarea id="body" rows="5" placeholder="Tulis isi pesannya di sini..."></textarea>
+
+      <label style="margin-top: 16px;">Penutup</label>
+      <div class="closing-options">
+        <button type="button" class="closing-btn" data-closing="Atas perhatian dan kerja samanya kami ucapkan terima kasih">Atas perhatian &amp; kerja sama</button>
+        <button type="button" class="closing-btn" data-closing="Demikian kami sampaikan atas perhatian dan kerja samanya kami ucapkan terima kasih">Demikian kami sampaikan</button>
+        <button type="button" class="closing-btn" data-closing="Terima kasih">Terima kasih</button>
+      </div>
+      <div id="closingPreview" class="closing-preview"></div>
+
+      <label for="outputTemplate" style="margin-top: 16px;">Hasil</label>
+      <div id="outputTemplate" class="output-box template-output"></div>
+
+      <div class="actions">
+        <button id="copyTemplate">Copy to clipboard</button>
+        <button id="clearTemplate" class="secondary">Clear</button>
+        <span id="statusTemplate" class="status"></span>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>

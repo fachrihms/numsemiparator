@@ -219,3 +219,58 @@ code {
     min-height: 0;
   }
 }
+
+input[type="text"] {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d6d6d3;
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.closing-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.closing-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #d6d6d3;
+  background: #fafafa;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.closing-btn:hover {
+  background: #f0f0ee;
+}
+
+.closing-btn.active {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+.closing-preview {
+  font-size: 13px;
+  color: #666;
+  min-height: 18px;
+  margin-bottom: 4px;
+}
+
+.template-output {
+  white-space: pre-wrap;
+}

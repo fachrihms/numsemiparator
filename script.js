@@ -159,3 +159,52 @@ document.getElementById('copyOnlyB').addEventListener('click', async function ()
   await copyText(onlyBList.textContent, onlyBList);
   showStatus(statusCompare);
 });
+
+/* ---- Template pesan ---- */
+const opening = document.getElementById('opening');
+const body = document.getElementById('body');
+const closingBtns = document.querySelectorAll('.closing-btn');
+const closingPreview = document.getElementById('closingPreview');
+const outputTemplate = document.getElementById('outputTemplate');
+const copyTemplateBtn = document.getElementById('copyTemplate');
+const clearTemplateBtn = document.getElementById('clearTemplate');
+const statusTemplate = document.getElementById('statusTemplate');
+
+let selectedClosing = closingBtns[0].getAttribute('data-closing');
+closingBtns[0].classList.add('active');
+closingPreview.textContent = selectedClosing;
+
+closingBtns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    closingBtns.forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    selectedClosing = btn.getAttribute('data-closing');
+    closingPreview.textContent = selectedClosing;
+    updateTemplate();
+  });
+});
+
+function updateTemplate() {
+  const parts = [];
+  if (opening.value.trim()) parts.push(opening.value.trim());
+  if (body.value.trim()) parts.push(body.value.trim());
+  if (selectedClosing) parts.push(selectedClosing);
+  outputTemplate.textContent = parts.join('\n\n');
+}
+
+opening.addEventListener('input', updateTemplate);
+body.addEventListener('input', updateTemplate);
+updateTemplate();
+
+copyTemplateBtn.addEventListener('click', async function () {
+  const text = outputTemplate.textContent;
+  if (!text) return;
+  await copyText(text, outputTemplate);
+  showStatus(statusTemplate);
+});
+
+clearTemplateBtn.addEventListener('click', function () {
+  body.value = '';
+  updateTemplate();
+  body.focus();
+});
