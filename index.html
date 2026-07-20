@@ -14,6 +14,7 @@
       <button class="nav-item" data-target="page-quoted">Format quoted</button>
       <button class="nav-item" data-target="page-compare">Bandingkan PO</button>
       <button class="nav-item" data-target="page-template">Template pesan</button>
+      <button class="nav-item" data-target="page-case">Ubah case teks</button>
     </nav>
 
     <main class="content">
@@ -138,6 +139,30 @@
         <div class="actions">
           <button id="copyQuick">Copy to clipboard</button>
           <span id="statusQuick" class="status"></span>
+        </div>
+      </section>
+
+      <section id="page-case" class="page">
+        <h1>Ubah case teks</h1>
+        <p class="subtitle">Tempel teks apapun, lalu pilih mau diubah jadi huruf kecil, huruf besar, atau kapital di awal tiap kata.</p>
+
+        <label for="inputCase">Input</label>
+        <textarea id="inputCase" rows="8" placeholder="Tulis atau tempel teks di sini..."></textarea>
+
+        <div class="closing-options">
+          <button type="button" id="btnLower">lower case</button>
+          <button type="button" id="btnUpper">UPPER CASE</button>
+          <button type="button" id="btnCapitalize">Capitalize Each Word</button>
+          <button type="button" id="btnSentence">Sentence case</button>
+        </div>
+
+        <label for="outputCase" style="margin-top: 16px;">Hasil</label>
+        <div id="outputCase" class="output-box template-output"></div>
+
+        <div class="actions">
+          <button id="copyCase">Copy to clipboard</button>
+          <button id="clearCase" class="secondary">Clear</button>
+          <span id="statusCase" class="status"></span>
         </div>
       </section>
 

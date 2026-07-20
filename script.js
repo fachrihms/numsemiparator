@@ -240,3 +240,49 @@ copyQuickBtn.addEventListener('click', async function () {
   await copyText(text, outputQuick);
   showStatus(statusQuick);
 });
+
+/* ---- Ubah case teks ---- */
+const inputCase = document.getElementById('inputCase');
+const outputCase = document.getElementById('outputCase');
+const copyCaseBtn = document.getElementById('copyCase');
+const clearCaseBtn = document.getElementById('clearCase');
+const statusCase = document.getElementById('statusCase');
+
+function toCapitalizeEachWord(str) {
+  return str.replace(/\S+/g, function (word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  });
+}
+
+function toSentenceCase(str) {
+  const lower = str.toLowerCase();
+  return lower.replace(/(^\s*\w|[.!?]\s+\w)/g, function (match) {
+    return match.toUpperCase();
+  });
+}
+
+document.getElementById('btnLower').addEventListener('click', function () {
+  outputCase.textContent = inputCase.value.toLowerCase();
+});
+document.getElementById('btnUpper').addEventListener('click', function () {
+  outputCase.textContent = inputCase.value.toUpperCase();
+});
+document.getElementById('btnCapitalize').addEventListener('click', function () {
+  outputCase.textContent = toCapitalizeEachWord(inputCase.value);
+});
+document.getElementById('btnSentence').addEventListener('click', function () {
+  outputCase.textContent = toSentenceCase(inputCase.value);
+});
+
+copyCaseBtn.addEventListener('click', async function () {
+  const text = outputCase.textContent;
+  if (!text) return;
+  await copyText(text, outputCase);
+  showStatus(statusCase);
+});
+
+clearCaseBtn.addEventListener('click', function () {
+  inputCase.value = '';
+  outputCase.textContent = '';
+  inputCase.focus();
+});
