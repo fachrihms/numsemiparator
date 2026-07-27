@@ -286,3 +286,59 @@ clearCaseBtn.addEventListener('click', function () {
   outputCase.textContent = '';
   inputCase.focus();
 });
+
+/* ---- Deteksi nomor PO ---- */
+const inputDetect = document.getElementById('inputDetect');
+const outputDetect = document.getElementById('outputDetect');
+const countDetect = document.getElementById('countDetect');
+const copyDetectBtn = document.getElementById('copyDetect');
+const clearDetectBtn = document.getElementById('clearDetect');
+const statusDetect = document.getElementById('statusDetect');
+const outputDetectQuoted = document.getElementById('outputDetectQuoted');
+const copyDetectQuotedBtn = document.getElementById('copyDetectQuoted');
+const statusDetectQuoted = document.getElementById('statusDetectQuoted');
+
+function detectPO(text) {
+  // Angka 10 digit berdiri sendiri (tidak nempel ke digit/titik/slash lain), diawali 31 atau 35
+  const regex = /(?<![\d./])(3[15]\d{8})(?![\d./])/g;
+  const matches = text.match(regex) || [];
+  const seen = new Set();
+  const result = [];
+  matches.forEach(function (m) {
+    if (!seen.has(m)) {
+      result.push(m);
+      seen.add(m);
+    }
+  });
+  return result;
+}
+
+function updateDetect() {
+  const found = detectPO(inputDetect.value);
+  outputDetect.textContent = found.join('\n');
+  countDetect.textContent = found.length;
+  outputDetectQuoted.textContent = found.map(function (p) { return "'" + p + "'"; }).join(', ');
+}
+
+inputDetect.addEventListener('input', updateDetect);
+updateDetect();
+
+copyDetectBtn.addEventListener('click', async function () {
+  const text = outputDetect.textContent;
+  if (!text) return;
+  await copyText(text, outputDetect);
+  showStatus(statusDetect);
+});
+
+clearDetectBtn.addEventListener('click', function () {
+  inputDetect.value = '';
+  updateDetect();
+  inputDetect.focus();
+});
+
+copyDetectQuotedBtn.addEventListener('click', async function () {
+  const text = outputDetectQuoted.textContent;
+  if (!text) return;
+  await copyText(text, outputDetectQuoted);
+  showStatus(statusDetectQuoted);
+});

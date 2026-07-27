@@ -15,6 +15,7 @@
       <button class="nav-item" data-target="page-compare">Bandingkan PO</button>
       <button class="nav-item" data-target="page-template">Template pesan</button>
       <button class="nav-item" data-target="page-case">Ubah case teks</button>
+      <button class="nav-item" data-target="page-detect">Deteksi nomor PO</button>
     </nav>
 
     <main class="content">
@@ -163,6 +164,30 @@
           <button id="copyCase">Copy to clipboard</button>
           <button id="clearCase" class="secondary">Clear</button>
           <span id="statusCase" class="status"></span>
+        </div>
+      </section>
+
+      <section id="page-detect" class="page">
+        <h1>Deteksi nomor PO</h1>
+        <p class="subtitle">Tempel teks/laporan bebas, sistem otomatis cari angka yang cocok kriteria PO: <strong>10 digit</strong>, diawali <strong>31</strong> atau <strong>35</strong>.</p>
+
+        <label for="inputDetect">Input (teks bebas)</label>
+        <textarea id="inputDetect" rows="10" placeholder="Tempel laporan atau teks yang ada nomor PO di dalamnya..."></textarea>
+
+        <label>Nomor PO ditemukan (<span id="countDetect">0</span>)</label>
+        <div id="outputDetect" class="output-box result-list"></div>
+
+        <div class="actions" style="margin-bottom: 16px;">
+          <button id="copyDetect">Copy to clipboard</button>
+          <button id="clearDetect" class="secondary">Clear</button>
+          <span id="statusDetect" class="status"></span>
+        </div>
+
+        <label for="outputDetectQuoted">Format quoted</label>
+        <div id="outputDetectQuoted" class="output-box"></div>
+        <div class="actions">
+          <button id="copyDetectQuoted">Copy to clipboard</button>
+          <span id="statusDetectQuoted" class="status"></span>
         </div>
       </section>
 
