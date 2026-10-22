@@ -299,8 +299,9 @@ const copyDetectQuotedBtn = document.getElementById('copyDetectQuoted');
 const statusDetectQuoted = document.getElementById('statusDetectQuoted');
 
 function detectPO(text) {
-  // Angka 10 digit berdiri sendiri (tidak nempel ke digit/titik/slash lain), diawali 31 atau 35
-  const regex = /(?<![\d./])(3[15]\d{8})(?![\d./])/g;
+  // Angka 10 digit diawali 31/32/33/34/35. Tidak boleh nempel ke digit/huruf/titik/slash lain,
+  // tapi boleh didahului tanda minus (misal "-3101833252" atau "PO-3101833252").
+  const regex = /(?<![\d/])(?<!\d\.)(3[1-5]\d{8})(?![\d/])(?!\.\d)/g;
   const matches = text.match(regex) || [];
   const seen = new Set();
   const result = [];

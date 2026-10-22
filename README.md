@@ -12,6 +12,9 @@ Dashboard utilitas untuk memproses nomor PO (purchase order) dan bikin template 
    - Ada di DB tapi tidak ada di tiket
 4. **Template pesan** — ketik isi/resolvean saja, pembuka (default "Yth Bapak/Ibu", bisa diedit) dan penutup (pilih salah satu dari 3 tombol: "Atas perhatian & kerja sama", "Demikian kami sampaikan", "Terima kasih") otomatis ditempel jadi satu pesan lengkap.
 
+5. **Ubah case teks** — lower case, UPPER CASE, Capitalize Each Word, dan Sentence case.
+6. **Deteksi nomor PO** — tempel teks bebas, otomatis diekstrak nomor PO-nya (10 digit, diawali 31/32/33/34/35, tetap kebaca walau ada tanda minus di depannya). Hasil tersedia dalam format per baris dan format quoted.
+
 Semua bagian punya tombol **Copy to clipboard** sendiri-sendiri, dan bagian input angka juga ada badge penanda jumlah angka yang terbaca.
 
 ## Cara deploy ke GitHub Pages
